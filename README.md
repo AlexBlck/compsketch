@@ -5,9 +5,9 @@ Official repository for ICIP 2021 Paper: Compositional Sketch Search
 ## Requirements
 Install and activate conda environment
 ```commandline
-   conda env create -f env.yml
-   conda activate sketchsearch
-   cd src
+conda env create -f env.yml
+conda activate sketchsearch
+cd src
 ```
 ## Indexing
 Either download faiss index for OpenImages test set [here](www.google.com) or index your own dataset like so:
