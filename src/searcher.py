@@ -30,6 +30,7 @@ class Searcher:
         # Load Faiss index of OpenImages test set
         self.index = faiss.read_index(os.path.join(os.path.dirname(__file__), f'../indexes/{index_name}'))
 
+        self.custom = custom
         # Dataset
         if custom:
             self.ds = CustomDataset(root)
@@ -70,8 +71,12 @@ class Searcher:
 
         urls = []
         for idx in I[0]:
-            batch = self.ds[idx]
-            urls.append(batch['img_or_url'])
+            if self.custom:
+                img = self.ds.get_original(idx)
+                urls.append(img)
+            else:
+                batch = self.ds[idx]
+                urls.append(batch['url'])
 
         return urls, qmasks
 
