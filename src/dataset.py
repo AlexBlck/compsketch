@@ -31,6 +31,11 @@ class CustomDataset(Dataset):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
+    # Raw transforms
+    raw_transform = transforms.Compose([
+        transforms.ToTensor()
+    ])
+
     def __init__(self, root):
         self.dataset = ImageFolder(root)
 
@@ -38,7 +43,7 @@ class CustomDataset(Dataset):
         batch = dict()
         img, cls = self.dataset[idx]
         batch['idx'] = idx
-        batch['img_or_url'] = img
+        batch['img_or_url'] = self.raw_transform(img)
         batch['img'] = self.transform(img)
 
         return batch

@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 import requests
 import os
+import torchvision.transforms.functional as TF
 
 
 def main():
@@ -70,7 +71,7 @@ def main():
         for k, url in enumerate(urls):
             try:
                 if custom:
-                    result = url
+                    result = TF.to_pil_image(url)
                 else:
                     result = Image.open(requests.get(url, stream=True).raw).convert('RGB')
                 if resize_images:

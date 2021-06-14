@@ -1,13 +1,3 @@
-"""
-speed up search on very large data
-use facebook faiss library
-ref: https://github.com/facebookresearch/faiss
-
-@author: Tu Bui @surrey.ac.uk
-"""
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 import faiss
 from torch import nn
 from torchvision import models
