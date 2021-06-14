@@ -3,7 +3,7 @@
 Official repository for ICIP 2021 Paper: Compositional Sketch Search
 
 ## Requirements
-1. Install and activate conda environment
+Install and activate conda environment
 ```commandline
    conda env create -f env.yml
    conda activate sketchsearch
