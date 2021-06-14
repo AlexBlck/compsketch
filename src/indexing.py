@@ -38,10 +38,12 @@ def train_faiss(args):
 
 
 if __name__ == '__main__':
+    os.makedirs(os.path.join(os.path.dirname(__file__), f'../indexes/'), exist_ok=True)
+
     parser = ArgumentParser()
     parser.add_argument('--root', type=str, required=True)
     parser.add_argument('--bs', type=int, default=64, help='Batch size')
-    parser.add_argument('--device', type=int, default=0, help='GPU device id, -1 for cpu')
+    parser.add_argument('--device', type=int, default=0, help='GPU device id')
     parser.add_argument('--name', type=str, required=True, default='my_index', help='index filename')
     args = parser.parse_args()
 
