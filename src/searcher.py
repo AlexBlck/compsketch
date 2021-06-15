@@ -19,7 +19,7 @@ class Searcher:
         self.model = Synth()
         self.model = nn.DataParallel(self.model)
         weights_filepath = os.path.join(os.path.dirname(__file__), '../weights/synth_gnet.pt')
-        self.model.load_state_dict(torch.load(weights_filepath))
+        self.model.load_state_dict(torch.load(weights_filepath, map_location=torch.device(0) if torch.cuda.is_available() else torch.device('cpu')))
         self.model.eval()
         self.f_size = 832
 
