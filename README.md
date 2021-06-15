@@ -29,3 +29,9 @@ If you are using a custom dataset:
 
 Sketch objects, using one colour per object.
 Press "Search" to see results!
+
+## Troubleshooting
+On a Mac, I had to run this command to make it work
+```bash
+export KMP_DUPLICATE_LIB_OK=TRUE
+```
