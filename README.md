@@ -1,5 +1,5 @@
 # Compositional Sketch Search
-
+![Header](examples/header.png)
 Official repository for ICIP 2021 Paper: Compositional Sketch Search
 
 ## Requirements
