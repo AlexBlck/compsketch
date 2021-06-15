@@ -15,17 +15,18 @@ import cv2
 class Searcher:
 
     def __init__(self, dataset_name, index_name, root=None):
+        self.device = torch.device(0) if torch.cuda.is_available() else torch.device('cpu')
         # Synthesis Model
         self.model = Synth()
         self.model = nn.DataParallel(self.model)
         weights_filepath = os.path.join(os.path.dirname(__file__), '../weights/synth_gnet.pt')
-        self.model.load_state_dict(torch.load(weights_filepath, map_location=torch.device(0) if torch.cuda.is_available() else torch.device('cpu')))
+        self.model.load_state_dict(torch.load(weights_filepath, map_location=self.device))
         self.model.eval()
         self.f_size = 832
 
         # Sketch model
         cag_weight = os.path.join(os.path.dirname(__file__), 'caffe2torch/model_sketch2.npy')
-        self.skt_hasher = SketchModel(cag_weight).to(0)
+        self.skt_hasher = SketchModel(cag_weight).to(self.device)
 
         # Load Faiss index of OpenImages test set
         self.index = faiss.read_index(os.path.join(os.path.dirname(__file__), f'../indexes/{index_name}'))
@@ -61,7 +62,7 @@ class Searcher:
             masks[0, :, mb[0]:mb[1], mb[2]:mb[3]] = 1
 
             # Synthesise visual feature
-            fQ = self.model(queries.to(0)) * masks.to(0)
+            fQ = self.model(queries.to(self.device)) * masks.to(self.device)
             fQ = fQ.flatten(1)
             fQ = F.normalize(fQ, p=2, dim=1)
             fqs[torch.abs(fQ) > fqs] = fQ[torch.abs(fQ) > fqs]
