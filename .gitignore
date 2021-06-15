@@ -2,3 +2,7 @@
 indexes/
 
 .idea/
+
+src/__pycache__/
+
+src/caffe2torch/__pycache__/
