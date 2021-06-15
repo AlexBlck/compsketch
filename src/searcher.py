@@ -51,7 +51,7 @@ class Searcher:
 
         sketches, qmasks, fmasks = self.separate_sketches(img)
 
-        fqs = torch.zeros(1, self.f_size * 7 * 7).cuda()
+        fqs = torch.zeros(1, self.f_size * 7 * 7).to(self.device)
         for sketch, qb, mb in zip(sketches, qmasks, fmasks):
             masks = torch.zeros(1, self.f_size, 7, 7)
             d = self.extract_descriptor(sketch)
