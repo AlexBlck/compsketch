@@ -14,7 +14,7 @@ import cv2
 
 class Searcher:
 
-    def __init__(self, custom, index_name, root=None):
+    def __init__(self, dataset_name, index_name, root=None):
         # Synthesis Model
         self.model = Synth()
         self.model = nn.DataParallel(self.model)
@@ -30,12 +30,14 @@ class Searcher:
         # Load Faiss index of OpenImages test set
         self.index = faiss.read_index(os.path.join(os.path.dirname(__file__), f'../indexes/{index_name}'))
 
-        self.custom = custom
+        self.custom = dataset_name == 'Custom'
         # Dataset
-        if custom:
+        if dataset_name == 'Custom':
             self.ds = CustomDataset(root)
-        else:
+        elif dataset_name == 'OpenImages':
             self.ds = OpenImages()
+        else:
+            self.ds = Unsplash()
 
     def extract_descriptor(self, img):
         skt = self.sketch_loader(img)

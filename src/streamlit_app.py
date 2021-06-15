@@ -22,10 +22,11 @@ def main():
     draw_boxes = st.sidebar.checkbox('Draw bboxes', True)
     resize_images = st.sidebar.checkbox('Resize images', False)
 
-    dataset = st.sidebar.selectbox("Dataset:", ("OpenImages", "Custom"))
+    dataset = st.sidebar.selectbox("Dataset:", ("OpenImages", "Unsplash", "Custom"))
     custom = dataset == 'Custom'
     ds_root = None
     index_name = st.sidebar.selectbox("Index:", os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/')))
+
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
 
@@ -44,7 +45,7 @@ def main():
     search_button = st.button('Search!')
 
     if search_button:
-        s = Searcher(custom, index_name, ds_root)
+        s = Searcher(dataset, index_name, ds_root)
         cols = st.beta_columns(ncols)
         img = canvas_result.image_data.astype(np.uint8)
 
@@ -75,5 +76,6 @@ def main():
 
 
 if __name__ == '__main__':
+    os.makedirs(os.path.join(os.path.dirname(__file__), f'../indexes/'), exist_ok=True)
     st.set_page_config(layout="wide", page_title="Compositional Sketch Search")
     main()

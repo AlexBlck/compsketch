@@ -4,6 +4,7 @@ from torch.utils.data import Dataset
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
 
+from PIL import Image
 
 class OpenImages(Dataset):
 
@@ -21,6 +22,44 @@ class OpenImages(Dataset):
 
     def __len__(self):
         return len(self.annotations)
+
+
+class UnsplashIndexing(Dataset):
+    # Image transforms
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+
+    def __init__(self):
+        self.root = '/mnt/nvme/datasets/unsplash/lite/imgs/all'
+        self.fnames = os.listdir(self.root)
+
+    def __getitem__(self, idx):
+        batch = dict()
+        batch['idx'] = int(self.fnames[idx].split('.')[0])
+        img = Image.open(os.path.join(self.root, self.fnames[idx]))
+        img = self.transform(img)
+        batch['img'] = img
+        return batch
+
+    def __len__(self):
+        return len(self.fnames)
+
+
+class Unsplash(Dataset):
+
+    def __init__(self):
+        self.urls = pd.read_csv(os.path.join(os.path.dirname(__file__), '../data/photos.tsv000'), sep='\t',
+                                usecols=['photo_image_url']).to_numpy()
+
+    def __getitem__(self, idx):
+        batch = dict()
+        batch['url'] = self.urls[idx][0] + '?fm=jpg&w=400&fit=max'
+        return batch
+
+    def __len__(self):
+        return len(self.urls)
 
 
 class CustomDataset(Dataset):
