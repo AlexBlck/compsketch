@@ -1,6 +1,6 @@
 # Compositional Sketch Search
 ![Header](examples/header.png)
-Official repository for ICIP 2021 Paper: Compositional Sketch Search
+Official repository for ICIP 2021 Paper: [Compositional Sketch Search](https://arxiv.org/abs/2106.08009)
 
 ## Requirements
 Install and activate conda environment
