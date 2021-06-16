@@ -36,13 +36,9 @@ def main():
         ds_root = st.sidebar.text_input("Dataset Root")
 
     st.write("Choose screen size!")
-    screen_phone = st.button('Phone')
-    screen_pc = st.button('PC')
+    screen_size = st.sidebar.selectbox('Screen size:', ("PC", "Phone"))
 
-    if not (screen_phone or screen_pc):
-        st.stop()
-
-    if screen_phone:
+    if screen_size == "Phone":
         canvas_width = 480
         canvas_height = 720
     else:
