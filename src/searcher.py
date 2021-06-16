@@ -1,11 +1,8 @@
-import os
 from torch import nn
 import torch
 from models import Synth
 import faiss
 from caffe2torch import SketchModel, bwmorph_thin
-import numpy as np
-from PIL import Image
 import torch.nn.functional as F
 from utils import *
 from dataset import *
@@ -21,7 +18,7 @@ class Searcher:
         self.model = nn.DataParallel(self.model)
         weights_filepath = os.path.join(os.path.dirname(__file__), '../weights/synth_gnet.pt')
         self.model.load_state_dict(torch.load(weights_filepath, map_location=self.device))
-        self.model.eval()
+        self.model.eval().to(self.device)
         self.f_size = 832
 
         # Sketch model
