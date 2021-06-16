@@ -39,9 +39,8 @@ def main():
     screen_phone = st.button('Phone')
     screen_pc = st.button('PC')
 
-    if not (screen_phone and screen_pc):
+    if not (screen_phone or screen_pc):
         st.stop()
-
 
     if screen_phone:
         canvas_width = 480
