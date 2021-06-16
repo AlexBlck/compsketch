@@ -32,18 +32,12 @@ class UnsplashIndexing(Dataset):
     ])
 
     def __init__(self):
-        self.root = '/mnt/nvme/dissertation/unsplash/full/imgs'
+        self.root = '/mnt/nvme/datasets/unsplash/lite/imgs/all'
         self.fnames = os.listdir(self.root)
-
-        self.urls = pd.read_csv(os.path.join(os.path.dirname(__file__), '../data/unsplash_full.tsv'), sep='\t',
-                                usecols=['photo_id', 'photo_image_url'])
-        self.urls['idx'] = self.urls.index
-        self.urls = self.urls.set_index(['photo_id'])
 
     def __getitem__(self, idx):
         batch = dict()
-        photo_id = self.fnames[idx].split('.')[0]
-        batch['idx'] = int(self.urls.loc[photo_id, 'idx'])
+        batch['idx'] = int(self.fnames[idx].split('.')[0])
         img = Image.open(os.path.join(self.root, self.fnames[idx]))
         img = self.transform(img)
         batch['img'] = img

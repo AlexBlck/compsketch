@@ -26,6 +26,7 @@ def train_faiss(args):
     model = faiss.IndexIDMap(model)
 
     print('Building index')
+    nnn = 0
     for batch in tqdm(loader):
         imgs = batch['img']
         idx = batch['idx'].detach().cpu().numpy().astype(int)
@@ -33,6 +34,10 @@ def train_faiss(args):
         features = F.normalize(features)
         features = features.detach().cpu().numpy().astype(np.float32)
         model.add_with_ids(features, idx)
+
+        nnn += 1
+        if nnn > 20:
+            break
 
     faiss.write_index(model, os.path.join(os.path.dirname(__file__), f'../indexes/{args.name}.bin'))
     print('Done!')

@@ -4,6 +4,7 @@ pandas==1.2.4
 opencv-python-headless
 Pillow==8.2.0
 scipy
+gdown
 streamlit==0.82.0
 streamlit-drawable-canvas==0.8.0
 torch==1.8.1

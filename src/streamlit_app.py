@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 import requests
 import os
+import subprocess
 
 
 def main():
@@ -25,6 +26,11 @@ def main():
     dataset = st.sidebar.selectbox("Dataset:", ("OpenImages", "Unsplash", "Custom"))
     custom = dataset == 'Custom'
     ds_root = None
+    indexlist = os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/'))
+
+    if len(indexlist) == 0:
+        st.warning("Index not found, downloading!")
+        subprocess.call('cd ../indexes && gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
     index_name = st.sidebar.selectbox("Index:", os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/')))
 
     if custom:
