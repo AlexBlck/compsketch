@@ -27,11 +27,10 @@ def main():
     custom = dataset == 'Custom'
     ds_root = None
     indexlist = os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/'))
-    st.write(os.listdir(os.path.join(os.path.dirname(__file__), '..')))
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
-        subprocess.call('cd ../indexes && gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
-    index_name = st.sidebar.selectbox("Index:", os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/')))
+        subprocess.call('gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
+    index_name = st.sidebar.selectbox("Index:", os.listdir(os.path.join(os.path.dirname(__file__))))
 
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
