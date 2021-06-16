@@ -9,7 +9,7 @@ conda env create -f env.yml
 conda activate compsketch
 cd src
 ```
-If you're having trouble, changing `faiss-gpu` to `faiss-cpu` in `env.yml`.
+If you're having trouble with installation, try changing `faiss-gpu` to `faiss-cpu` in `env.yml`.
 ## Indexing
 Either download faiss index for OpenImages or Unsplash indexes
 [here](https://drive.google.com/drive/folders/12NY_BRNxF5ZpxB7wW8bl4_uXbv1LiHz-?usp=sharing) and place them in `indexes/` or index your own dataset like so:
