@@ -1,5 +1,6 @@
 faiss-cpu
 numpy
+opencv-python
 pandas==1.2.4
 Pillow==8.2.0
 scipy
