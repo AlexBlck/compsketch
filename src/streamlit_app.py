@@ -23,14 +23,14 @@ def main():
     draw_boxes = st.sidebar.checkbox('Draw bboxes', True)
     resize_images = st.sidebar.checkbox('Resize images', False)
 
-    dataset = st.sidebar.selectbox("Dataset:", ("OpenImages", "Unsplash", "Custom"))
+    dataset = "Unsplash"
     custom = dataset == 'Custom'
     ds_root = None
     indexlist = os.listdir('/app/compsketch/indexes')
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
         subprocess.call('cd /app/compsketch/indexes && gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
-    index_name = st.sidebar.selectbox("Index:", os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/')))
+    index_name = os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/'))[0]
 
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
@@ -42,7 +42,7 @@ def main():
         stroke_color=stroke_color,
         update_streamlit=True,
         height=480,
-        width=720,
+        width=480,
         drawing_mode=drawing_mode,
         display_toolbar=True
     )
