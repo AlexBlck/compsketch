@@ -35,14 +35,27 @@ def main():
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
 
+    screen_phone = st.button('Search!')
+    screen_pc = st.button('Search!')
+    st.stop()
+    if not (screen_phone and screen_pc):
+        st.write("Choose screen size!")
+
+    if screen_phone:
+        canvas_width = 480
+        canvas_height = 720
+    else:
+        canvas_width = 720
+        canvas_height = 480
+
     # Create a canvas component
     canvas_result = st_canvas(
         fill_color="rgba(0, 0, 0, 0)",
         stroke_width=stroke_width,
         stroke_color=stroke_color,
         update_streamlit=True,
-        height=480,
-        width=480,
+        height=canvas_height,
+        width=canvas_width,
         drawing_mode=drawing_mode,
         display_toolbar=True
     )
