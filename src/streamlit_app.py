@@ -35,11 +35,13 @@ def main():
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
 
-    screen_phone = st.button('Search!')
-    screen_pc = st.button('Search!')
-    st.stop()
+    st.write("Choose screen size!")
+    screen_phone = st.button('Phone')
+    screen_pc = st.button('PC')
+
     if not (screen_phone and screen_pc):
-        st.write("Choose screen size!")
+        st.stop()
+
 
     if screen_phone:
         canvas_width = 480
