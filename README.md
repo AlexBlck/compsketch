@@ -1,5 +1,7 @@
 # Compositional Sketch Search
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/alexblck/compsketch/share/src/)
+[![arXiv](https://img.shields.io/badge/arXiv-2106.08009-b31b1b.svg?style=flat)](https://arxiv.org/abs/2106.08009)
+
 ![Header](examples/header.png)
 Official repository for ICIP 2021 Paper: [Compositional Sketch Search](https://arxiv.org/abs/2106.08009)
 
