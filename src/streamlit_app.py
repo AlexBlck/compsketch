@@ -39,7 +39,7 @@ def main():
 
     if screen_size == "Phone":
         canvas_width = 330
-        canvas_height = 450
+        canvas_height = 330
     else:
         canvas_width = 720
         canvas_height = 480
