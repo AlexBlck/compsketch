@@ -1,7 +1,7 @@
 faiss-cpu
 numpy
-opencv-python
 pandas==1.2.4
+opencv-python-headless
 Pillow==8.2.0
 scipy
 streamlit==0.82.0
