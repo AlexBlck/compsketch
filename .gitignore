@@ -6,3 +6,9 @@ indexes/
 src/__pycache__/
 
 src/caffe2torch/__pycache__/
+
+data/unsplash_full.tsv
+
+Untitled.ipynb
+
+.ipynb_checkpoints/
