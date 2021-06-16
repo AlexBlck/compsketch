@@ -39,7 +39,7 @@ def main():
     screen_size = st.sidebar.selectbox('Screen size:', ("PC", "Phone"))
 
     if screen_size == "Phone":
-        canvas_width = 350
+        canvas_width = 320
         canvas_height = 450
     else:
         canvas_width = 720
