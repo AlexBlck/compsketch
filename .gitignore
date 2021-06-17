@@ -12,3 +12,5 @@ data/unsplash_full.tsv
 Untitled.ipynb
 
 .ipynb_checkpoints/
+
+src/tmp.py

@@ -7,6 +7,15 @@ import requests
 import os
 
 
+def hash_searcher(args):
+    return args
+
+
+@st.cache(hash_funcs={Searcher: hash_searcher})
+def load_searcher(args):
+    return Searcher(*args)
+
+
 def main():
     st.sidebar.header("Configuration")
 
@@ -45,7 +54,7 @@ def main():
     search_button = st.button('Search!')
 
     if search_button:
-        s = Searcher(dataset, index_name, ds_root)
+        s = load_searcher((dataset, index_name, ds_root))
         cols = st.beta_columns(ncols)
         img = canvas_result.image_data.astype(np.uint8)
 
