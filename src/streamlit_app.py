@@ -8,6 +8,7 @@ import os
 import subprocess
 from time import sleep
 
+
 def hash_searcher(args):
     return args
 
@@ -32,11 +33,11 @@ def main():
     draw_boxes = st.sidebar.checkbox('Draw bboxes', True)
     resize_images = st.sidebar.checkbox('Resize images', False)
 
-    dataset = "OpenImages" #"Unsplash"
+    dataset = "Unsplash"
     custom = dataset == 'Custom'
     ds_root = None
     indexlist = os.listdir('/app/compsketch/indexes')
-    file_id = '1d4SyzExqFIbJkdCtalbxsWnDem-KYcDs'#'1P65BYLakgzMfpDsVQ3TwJZXohGpYtMCq'  # 1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap
+    file_id = '1P65BYLakgzMfpDsVQ3TwJZXohGpYtMCq'  # 1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
         subprocess.call(f'cd /app/compsketch/indexes && gdown https://drive.google.com/uc?id={file_id}', shell=True)
