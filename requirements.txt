@@ -7,6 +7,6 @@ scipy
 gdown
 streamlit==0.82.0
 streamlit-drawable-canvas==0.7.0
-torch==1.8.1
-torchvision==0.9.1
+torch==1.8.1+cpu
+torchvision==0.9.1+cpu
 tqdm==4.61.1
