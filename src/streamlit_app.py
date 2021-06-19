@@ -35,13 +35,13 @@ def main():
     dataset = "Unsplash"
     custom = dataset == 'Custom'
     ds_root = None
-    st.write(os.listdir('.'))
-    st.write(os.listdir('~/'))
-    indexlist = os.listdir('/app/compsketch/indexes')
+
+    indexpath = os.path.join(os.path.dirname(__file__), '../indexes/')
+    indexlist = os.listdir(indexpath)
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
-        subprocess.call('cd /app/compsketch/indexes && gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
-    index_name = os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/'))[0]
+        subprocess.call(f'cd {indexpath} && gdown https://drive.google.com/uc?id=1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap', shell=True)
+    index_name = os.listdir(indexpath)[0]
 
     if custom:
         ds_root = st.sidebar.text_input("Dataset Root")
