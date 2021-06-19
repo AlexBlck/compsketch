@@ -35,6 +35,8 @@ def main():
     dataset = "Unsplash"
     custom = dataset == 'Custom'
     ds_root = None
+    st.write(os.listdir('.'))
+    st.write(os.listdir('~/'))
     indexlist = os.listdir('/app/compsketch/indexes')
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
