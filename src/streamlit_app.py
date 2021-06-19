@@ -32,7 +32,7 @@ def main():
     draw_boxes = st.sidebar.checkbox('Draw bboxes', True)
     resize_images = st.sidebar.checkbox('Resize images', False)
 
-    dataset = "OpenImages"#"Unsplash"
+    dataset = "OpenImages" #"Unsplash"
     custom = dataset == 'Custom'
     ds_root = None
     indexlist = os.listdir('/app/compsketch/indexes')
