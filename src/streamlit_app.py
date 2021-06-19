@@ -41,7 +41,6 @@ def main():
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
         subprocess.call(f'cd /app/compsketch/indexes && gdown https://drive.google.com/uc?id={file_id}', shell=True)
-    sleep(180)
     index_name = os.listdir(os.path.join(os.path.dirname(__file__), '../indexes/'))[0]
 
     if custom:
