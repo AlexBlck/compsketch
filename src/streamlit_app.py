@@ -48,7 +48,8 @@ def main():
         height=480,
         width=720,
         drawing_mode=drawing_mode,
-        display_toolbar=True
+        display_toolbar=True,
+        key="compsketch"
     )
 
     search_button = st.button('Search!')
