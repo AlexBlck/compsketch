@@ -5,7 +5,7 @@ opencv-python-headless
 Pillow==8.2.0
 scipy
 gdown
-streamlit==0.82.0
+streamlit==0.73.0
 streamlit-drawable-canvas==0.7.0
 torch==1.8.1
 torchvision==0.9.1
