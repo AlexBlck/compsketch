@@ -103,5 +103,5 @@ def main():
 
 if __name__ == '__main__':
     os.makedirs(os.path.join(os.path.dirname(__file__), f'../indexes/'), exist_ok=True)
-    st.set_page_config(layout="wide", page_title="Compositional Sketch Search")
+    st.set_page_config(layout="wide", page_title="Compositional Sketch Search", page_icon='✏')
     main()
