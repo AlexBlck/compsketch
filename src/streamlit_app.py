@@ -37,7 +37,7 @@ def main():
     custom = dataset == 'Custom'
     ds_root = None
     indexlist = os.listdir('/app/compsketch/indexes')
-    file_id = '1P65BYLakgzMfpDsVQ3TwJZXohGpYtMCq'  # 1-d43C1sDRAXDK6VrWdZUDdbckgHpq6Ap
+    file_id = '1bNvu37jbruudkugrIHR5VAiyLJODXnNQ'  # '1P65BYLakgzMfpDsVQ3TwJZXohGpYtMCq'
     if len(indexlist) == 0:
         st.warning("Index not found, downloading!")
         subprocess.call(f'cd /app/compsketch/indexes && gdown https://drive.google.com/uc?id={file_id}', shell=True)
