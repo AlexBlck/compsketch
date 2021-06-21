@@ -56,7 +56,7 @@ class UnsplashIndexing(Dataset):
 class Unsplash(Dataset):
 
     def __init__(self):
-        self.urls = pd.read_csv(os.path.join(os.path.dirname(__file__), '../data/photos.tsv000'), sep='\t',
+        self.urls = pd.read_csv(os.path.join(os.path.dirname(__file__), '../data/unsplash_full.tsv'), sep='\t',
                                 usecols=['photo_image_url']).to_numpy()
 
     def __getitem__(self, idx):

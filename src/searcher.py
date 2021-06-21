@@ -27,7 +27,7 @@ class Searcher:
 
         # Load Faiss index of OpenImages test set
         self.index = faiss.read_index(os.path.join(os.path.dirname(__file__), f'../indexes/{index_name}'))
-
+        self.index.nprobe = 100
         self.custom = dataset_name == 'Custom'
         # Dataset
         if dataset_name == 'Custom':
